@@ -1,12 +1,15 @@
 package com.example.erp.controller;
 
 import com.example.erp.dto.UserDto;
+import com.example.erp.entity.Stock;
 import com.example.erp.entity.User;
+import com.example.erp.repository.StockRepository;
 import com.example.erp.service.UserService;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -30,6 +33,10 @@ import java.util.List;
 public class AuthController {
 
     private UserService userService;
+
+    @Autowired
+    private StockRepository stockRepository;
+
 
     public AuthController(UserService userService) {
         this.userService = userService;
@@ -97,7 +104,8 @@ public class AuthController {
 
         
     @GetMapping("/Stock")
-    public String Stock(Model model){
+    public String Stock(@Valid Stock stock, BindingResult result, Model model){
+        model.addAttribute("stocks", stockRepository.findAll());
         return "backend/inventory";
     }
 

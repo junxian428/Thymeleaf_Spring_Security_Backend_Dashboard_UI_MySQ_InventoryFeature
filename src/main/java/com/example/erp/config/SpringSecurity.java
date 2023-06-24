@@ -31,9 +31,9 @@ public class SpringSecurity{
         http.csrf().disable()
                 .authorizeRequests()
                 .requestMatchers("/register/**").permitAll()
-                .requestMatchers("/js/**", "/css/**","/lib/**","/scss").permitAll()
+                .requestMatchers("/js/**", "/css/**","/lib/**","/scss","/img/**").permitAll()
                 .requestMatchers("/index", "/username","/uploadFile","/upload","/download/**","/delete").permitAll()
-                .requestMatchers("/backend/**").hasAnyAuthority("USER", "ADMIN")
+                .requestMatchers("/backend/**","/stock/**").hasAnyAuthority("USER", "ADMIN")
                 .requestMatchers("/admin/**").hasRole("ADMIN")
                 .and().
                 formLogin(

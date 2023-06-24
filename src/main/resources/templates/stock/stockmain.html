@@ -1,0 +1,24 @@
+<div th:switch="${stocks}">
+    <h2 th:case="null">No stock yet!</h2>
+        <div th:case="*">
+            <h2>Inventory Management</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Quantity</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr th:each="stock : ${stocks}">
+                    <td th:text="${stock.name}"></td>
+                    <td th:text="${stock.quantity}"></td>
+                    <td><a th:href="@{/stockedit/{id}(id=${stock.id})}">Edit</a></td>
+                    <td><a th:href="@{/deletestock/{id}(id=${stock.id})}">Delete</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>      
+</div>

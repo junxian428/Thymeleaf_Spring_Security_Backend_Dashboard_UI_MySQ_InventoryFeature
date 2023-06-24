@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"
-      xmlns:th="http://www.thymeleaf.org"
->
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
@@ -56,18 +54,18 @@
                         <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                     </div>
                     <div class="ms-3">
-                        <h6 class="mb-0">Junxian428</h6>
+                        <h6 class="mb-0">Jhon Doe</h6>
                         <span>Admin</span>
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="/dashboard" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Sale Dashboard</a>
+                    <a href="/dashboard" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>HR</a>
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Elements</a>
                         <div class="dropdown-menu bg-transparent border-0">
-                            <a href="button.html" class="dropdown-item">Attendance</a>
-                            <a href="typography.html" class="dropdown-item">Leaves</a>
-                            <a href="element.html" class="dropdown-item">Salary</a>
+                            <a href="button.html" class="dropdown-item">Buttons</a>
+                            <a href="typography.html" class="dropdown-item">Typography</a>
+                            <a href="element.html" class="dropdown-item">Other Elements</a>
                         </div>
                     </div>
                     <a href="/eplatform" class="nav-item nav-link"><i class="fa fa-th me-2"></i>E-Commerce</a>
@@ -182,99 +180,56 @@
             <!-- Navbar End -->
 
 
-            <!-- Table Start -->
+            <!-- Chart Start -->
             <div class="container-fluid pt-4 px-4">
                 <div class="row g-4">
                     <div class="col-sm-12 col-xl-6">
                         <div class="bg-secondary rounded h-100 p-4">
-                            <h6 class="mb-4">Stock Management System</h6>
-                            <!--
-
-
-                                <div th:switch="${stocks}">
-    <h2 th:case="null">No stock yet!</h2>
-        <div th:case="*">
-            <h2>Inventory Management</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Quantity</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
-                    </tr>
-                </thead>
-                <tbody>
-                <tr th:each="stock : ${stocks}">
-                    <td th:text="${stock.name}"></td>
-                    <td th:text="${stock.quantity}"></td>
-                    <td><a th:href="@{/stockedit/{id}(id=${stock.id})}">Edit</a></td>
-                    <td><a th:href="@{/deletestock/{id}(id=${stock.id})}">Delete</a></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>      
-</div>
-                            -->
-                            
-                            <div th:switch="${stocks}">
-                                    <div th:case="*">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Quantity</th>
-                                        <th scope="col">Edit</th>
-                                        <th scope="col">Delete</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr th:each="stock : ${stocks}">
-                                        <td th:text="${stock.name}"></td>
-                                        <td th:text="${stock.quantity}"></td>
-                                        <td><a th:href="@{/stockedit/{id}(id=${stock.id})}">Edit</a></td>
-                                        <td><a th:href="@{/deletestock/{id}(id=${stock.id})}">Delete</a></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            
-                                            
-                                 </div>
-                          </div>
-                 
+                            <h6 class="mb-4">Single Line Chart</h6>
+                            <canvas id="line-chart"></canvas>
                         </div>
                     </div>
-
-
-
-
                     <div class="col-sm-12 col-xl-6">
                         <div class="bg-secondary rounded h-100 p-4">
-                            <h6 class="mb-4">Add Stock</h6>
-                            <table class="table table-striped">
-                                <form action="#" th:action="@{/addStock}" th:object="${stock}" method="post">
-                                    <label for="name">Name&nbsp&nbsp&nbsp&nbsp&nbsp</label>
-                                    <input type="text" th:field="*{name}" id="name" placeholder="Name">
-                                    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
-                                    <br>
-                                    <label for="quantity">Quantity</label>
-                                    <input type="text" th:field="*{quantity}" id="quantity" placeholder="Quantity">
-                                    <span th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}"></span>
-                                    <br>
-                                    <br>
-                                    <input type="submit" value="Add Quantity">   
-                                  </form>
-                            </table>
+                            <h6 class="mb-4">Multiple Line Chart</h6>
+                            <canvas id="salse-revenue"></canvas>
                         </div>
                     </div>
-                 
+                    <div class="col-sm-12 col-xl-6">
+                        <div class="bg-secondary rounded h-100 p-4">
+                            <h6 class="mb-4">Single Bar Chart</h6>
+                            <canvas id="bar-chart"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-xl-6">
+                        <div class="bg-secondary rounded h-100 p-4">
+                            <h6 class="mb-4">Multiple Bar Chart</h6>
+                            <canvas id="worldwide-sales"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-xl-6">
+                        <div class="bg-secondary rounded h-100 p-4">
+                            <h6 class="mb-4">Pie Chart</h6>
+                            <canvas id="pie-chart"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-xl-6">
+                        <div class="bg-secondary rounded h-100 p-4">
+                            <h6 class="mb-4">Doughnut Chart</h6>
+                            <canvas id="doughnut-chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Chart End -->
+
 
             <!-- Footer Start -->
             <div class="container-fluid pt-4 px-4">
                 <div class="bg-secondary rounded-top p-4">
                     <div class="row">
                         <div class="col-12 col-sm-6 text-center text-sm-start">
-                            &copy; <a href="#">ERP System</a>, All Right Reserved. 
+                            &copy; <a href="#">Your Site Name</a>, All Right Reserved. 
                         </div>
                         <div class="col-12 col-sm-6 text-center text-sm-end">
                             <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
